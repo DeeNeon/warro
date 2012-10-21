@@ -2,6 +2,7 @@ Warro
 =====
 
 Warro Maps - Navigator &amp; Tiler
+
 Demo: [www.warro.org](http://www.warro.org)
 
 ## Sponsored Grey-Cola-Chickened Speak from the author
@@ -29,7 +30,7 @@ Adykto
 
 ## Acknowledges
 
-- DeeNeon: for the challenge. The real one action man.
+- DeeNeon: for the challenge. The most real one action man in Cabo!
 - Joss: for being a tuberculous all the time.
 - [AjaxLoad.info](http://ajaxload.info/): for their gorgeous .GIF loader.
 - [Sublime Text 2 Dev Builds](http://www.sublimetext.com/dev): I'm in love with this text editor!
