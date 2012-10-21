@@ -12,6 +12,7 @@
 	$lockerFile = $mapsPath.$mapName.'.lck';
 	$tileFileTemplate = $tilesPath.$mapName.'_%03d_%03d_%03d.jpg';
 	$createTiles = true;
+	$minimap = '';
 
 	// checar si el archivo ya había sido partido en tiles:
 	if (file_exists($mapFileName)) {
@@ -30,20 +31,25 @@
 	}
 
 	list($mapWidth, $mapHeight, $mapType, $mapAttr) = getimagesize($mapFileName);
+	$thumbHeight = 124;
+	$thumbWidth = floor($mapWidth * ( $thumbHeight / $mapHeight ));
 	$tilesCountX = ceil($mapWidth / $tileWidth);
 	$tilesCountY = ceil($mapHeight / $tileHeight);
 
 	if($createTiles) {
 		$mapImage = imagecreatefromjpeg($mapFileName);
 
-		$thumbHeight = 24;
-		$thumbWidth = floor($mapWidth * ( $thumbHeight / $mapHeight ));
 
 		$thumbImage = imagecreatetruecolor($thumbWidth, $thumbHeight);
 		imagecopyresampled($thumbImage, $mapImage, 0, 0, 0, 0, $thumbWidth, $thumbHeight, $mapWidth, $mapHeight);
 		imagejpeg($thumbImage, $thumbFileName);
 		imagedestroy($thumbImage);
+
+	} else {
+
 	}
+
+	$minimapStyle = 'width:'.$thumbWidth.'px;background-image:url('.$thumbFileName.');';
 
 	// crear el menú de mapas
 	if ($mapsHandle = opendir($mapsPath)) {
@@ -92,6 +98,7 @@
 			</div>
 		</div>
 		<ul id="menu"><?php echo $menu; ?></ul>
+		<div id="minimap" style="<?php echo $minimapStyle; ?>"></div>
 		<script type="text/javascript" src="js/scripts.js"></script>
 	</body>
 </html>
